@@ -2,33 +2,24 @@
 <html lang="ru">
 
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Planet Clicker</title>
 
     <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
 
     <!-- Фон -->
-
     <div id="background"></div>
 
     <!-- Верхняя панель -->
-
     <header id="top-bar">
 
         <div id="coins">
-
-            <img src="images/energy_icon.png" alt="">
-
+            <img src="images/energy_icon.png">
             <span id="coin-count">0</span>
-
         </div>
 
         <div id="buttons">
@@ -50,13 +41,11 @@
     </header>
 
     <!-- Планета -->
-
     <main>
 
         <img
             src="images/planet_earth.png"
-            id="planet"
-            alt="Planet">
+            id="planet">
 
     </main>
 
@@ -85,7 +74,7 @@
         <button id="buySuper">
             АвтоКликСуперМена
             <br>
-            +10 монет/сек
+            +10/сек
             <br>
             Цена: 100
         </button>
@@ -95,7 +84,7 @@
         <button id="buySpider">
             АвтоКликСпайдерМена
             <br>
-            +30 монет/сек
+            +30/сек
             <br>
             Цена: 150
         </button>
@@ -104,31 +93,62 @@
 
     <!-- Планеты -->
 
-    <div id="planetWindow" class="window"></div>
+    <div id="planetWindow" class="window">
 
-    <!-- Инвентарь -->
+        <h2>🪐 Планеты</h2>
 
-    <div id="inventoryWindow" class="window"></div>
-
-    <!-- Статистика -->
-
-    <div id="statsWindow" class="window"></div>
-
-    <!-- Настройки -->
-
-    <div id="settingsWindow" class="window">
-
-        <h2>⚙️ Настройки</h2>
-
-        <button id="toggleMusic">
-            Музыка Вкл/Выкл
+        <button id="earthPlanet">
+            🌍 Земля
         </button>
 
         <br><br>
 
-        <button id="toggleSound">
-            Звуки Вкл/Выкл
+        <button id="moonPlanet">
+            🌕 Луна (500 кликов)
         </button>
+
+        <br><br>
+
+        <button id="lavaPlanet">
+            🌋 Лава (1500 кликов)
+        </button>
+
+        <br><br>
+
+        <button id="icePlanet">
+            ❄️ Ледяная (2000 кликов)
+        </button>
+
+        <br><br>
+
+        <button id="saturnPlanet">
+            🪐 Сатурн (2500 кликов)
+        </button>
+
+        <br><br>
+
+        <button id="darkPlanet">
+            🌑 Тёмная (3000 кликов)
+        </button>
+
+    </div>
+
+    <!-- Инвентарь -->
+    <div id="inventoryWindow" class="window"></div>
+
+    <!-- Статистика -->
+    <div id="statsWindow" class="window"></div>
+
+    <!-- Настройки -->
+    <div id="settingsWindow" class="window">
+
+        <h2>⚙️ Настройки</h2>
+
+        <button id="toggleMusic">Музыка</button>
+
+        <br><br>
+
+        <button id="toggleSound">Звуки</button>
 
         <br><br>
 
@@ -139,37 +159,20 @@
     </div>
 
     <!-- Ежедневная награда -->
-
     <div id="dailyWindow" class="window"></div>
 
-    <!-- Первый подарок -->
+    <!-- Подарок при первом входе -->
 
     <div id="welcomeWindow" class="window">
 
         <h2>🎉 Добро пожаловать!</h2>
 
-        <p>
+        <p>Спасибо, что зашли в нашу игру!</p>
 
-            Спасибо, что зашли в нашу игру!
-
-        </p>
-
-        <h3>
-
-            🎁 Подарок
-
-        </h3>
-
-        <h1>
-
-            50 монет
-
-        </h1>
+        <h1>🎁 50 монет</h1>
 
         <button id="claimGift">
-
             Забрать
-
         </button>
 
     </div>
@@ -182,7 +185,7 @@
         loop>
     </audio>
 
-    <!-- Клик -->
+    <!-- Звук клика -->
 
     <audio
         id="clickSound"
@@ -192,5 +195,4 @@
     <script src="script.js"></script>
 
 </body>
-
 </html>
