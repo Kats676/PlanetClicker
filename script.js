@@ -358,3 +358,443 @@ saveGame();
 }
 
 }
+
+// ===========================
+// Planet Clicker
+// Часть 4
+// ===========================
+
+// ---------- Настройки ----------
+
+let musicEnabled = true;
+let soundEnabled = true;
+
+const settingsBtn = document.getElementById("settingsBtn");
+const settingsWindow = document.getElementById("settingsWindow");
+
+const toggleMusic = document.getElementById("toggleMusic");
+const toggleSound = document.getElementById("toggleSound");
+const resetGame = document.getElementById("resetGame");
+
+settingsBtn.onclick = () => {
+
+    if (settingsWindow.style.display == "block") {
+
+        settingsWindow.style.display = "none";
+
+    } else {
+
+        settingsWindow.style.display = "block";
+
+    }
+
+};
+
+// Музыка
+
+toggleMusic.onclick = () => {
+
+    musicEnabled = !musicEnabled;
+
+    if (musicEnabled) {
+
+        bgMusic.play();
+
+    } else {
+
+        bgMusic.pause();
+
+    }
+
+};
+
+// Звуки
+
+toggleSound.onclick = () => {
+
+    soundEnabled = !soundEnabled;
+
+};
+
+// ---------- Первый подарок ----------
+
+const welcomeWindow = document.getElementById("welcomeWindow");
+const claimGift = document.getElementById("claimGift");
+
+if (!localStorage.getItem("firstGift")) {
+
+    welcomeWindow.style.display = "block";
+
+}
+
+claimGift.onclick = () => {
+
+    coins += 50;
+
+    updateCoins();
+
+    welcomeWindow.style.display = "none";
+
+    localStorage.setItem("firstGift", "yes");
+
+    saveGame();
+
+};
+
+// ---------- Ежедневная награда ----------
+
+const dailyBtn = document.getElementById("dailyBtn");
+const dailyWindow = document.getElementById("dailyWindow");
+
+dailyBtn.onclick = () => {
+
+    let last = localStorage.getItem("dailyDate");
+
+    let today = new Date().toDateString();
+
+    if (last == today) {
+
+        alert("Сегодня награда уже получена!");
+
+        return;
+
+    }
+
+    let day = Number(localStorage.getItem("dailyDay") || 1);
+
+    let reward = 25;
+
+    switch (day) {
+
+        case 1:
+            reward = 25;
+            break;
+
+        case 2:
+            reward = 300;
+            break;
+
+        case 3:
+            reward = 1000;
+            break;
+
+        case 4:
+            reward = 1700;
+            break;
+
+        case 5:
+            reward = 2400;
+            break;
+
+        default:
+            reward = 3000;
+            break;
+
+    }
+
+    coins += reward;
+
+    updateCoins();
+
+    alert("Вы получили " + reward + " монет!");
+
+    localStorage.setItem("dailyDate", today);
+
+    day++;
+
+    if (day > 6)
+        day = 1;
+
+    localStorage.setItem("dailyDay", day);
+
+    saveGame();
+
+};
+
+// ---------- Сброс ----------
+
+resetGame.onclick = () => {
+
+    if (confirm("Удалить всё сохранение?")) {
+
+        localStorage.clear();
+
+        location.reload();
+
+    }
+
+};
+
+// ==========================
+// Часть 5
+// Статистика + Инвентарь
+// ==========================
+
+// Статистика
+
+const statsBtn = document.getElementById("statsBtn");
+const statsWindow = document.getElementById("statsWindow");
+
+let totalClicks = 0;
+let playTime = 0;
+
+// Инвентарь
+
+const inventoryBtn = document.getElementById("inventoryBtn");
+const inventoryWindow = document.getElementById("inventoryWindow");
+
+
+// ---------- Открыть статистику ----------
+
+statsBtn.onclick = () => {
+
+    if (statsWindow.style.display == "block") {
+
+        statsWindow.style.display = "none";
+
+    } else {
+
+        statsWindow.style.display = "block";
+
+        statsWindow.innerHTML = `
+
+        <h2>📊 Статистика</h2>
+
+        <br>
+
+        <p>Всего кликов: ${totalClicks}</p>
+
+        <p>Монет: ${coins}</p>
+
+        <p>Монет за клик: ${clickPower}</p>
+
+        <p>Автоклик: ${autoClick}/сек</p>
+
+        <p>Время игры: ${playTime} сек</p>
+
+        `;
+
+    }
+
+};
+
+
+// ---------- Открыть инвентарь ----------
+
+inventoryBtn.onclick = () => {
+
+    if (inventoryWindow.style.display == "block") {
+
+        inventoryWindow.style.display = "none";
+
+    } else {
+
+        inventoryWindow.style.display = "block";
+
+        inventoryWindow.innerHTML = `
+
+        <h2>🎒 Инвентарь</h2>
+
+        <br>
+
+        <p>Монет: ${coins}</p>
+
+        <p>Клик: +${clickPower}</p>
+
+        <p>Автоклик: +${autoClick}/сек</p>
+
+        `;
+
+    }
+
+};
+
+
+// ---------- Считаем клики ----------
+
+planet.addEventListener("click", () => {
+
+    totalClicks++;
+
+});
+
+
+// ---------- Время игры ----------
+
+setInterval(() => {
+
+    playTime++;
+
+}, 1000);
+
+// ===========================
+// Planet Clicker
+// Часть 6
+// ===========================
+
+// Выбранная планета
+let currentPlanet = "earth";
+
+// ---------- Сохранение ----------
+
+function saveGame(){
+
+    const data = {
+
+        coins,
+        clickPower,
+        autoClick,
+        totalClicks,
+        playTime,
+        clicks,
+        currentPlanet,
+        musicEnabled,
+        soundEnabled
+
+    };
+
+    localStorage.setItem(
+        "planetClickerSave",
+        JSON.stringify(data)
+    );
+
+}
+
+// ---------- Загрузка ----------
+
+function loadGame(){
+
+    const save = localStorage.getItem("planetClickerSave");
+
+    if(!save) return;
+
+    const data = JSON.parse(save);
+
+    coins = data.coins ?? 0;
+    clickPower = data.clickPower ?? 1;
+    autoClick = data.autoClick ?? 0;
+    totalClicks = data.totalClicks ?? 0;
+    playTime = data.playTime ?? 0;
+    clicks = data.clicks ?? 0;
+
+    currentPlanet = data.currentPlanet ?? "earth";
+
+    musicEnabled = data.musicEnabled ?? true;
+    soundEnabled = data.soundEnabled ?? true;
+
+    planet.src = "images/planet_" + currentPlanet + ".png";
+
+    updateCoins();
+
+}
+
+// ---------- Выбор планет ----------
+
+earthPlanet.onclick = () => {
+
+    currentPlanet = "earth";
+    planet.src = "images/planet_earth.png";
+    saveGame();
+
+};
+
+moonPlanet.onclick = () => {
+
+    if(clicks >= 500){
+
+        currentPlanet = "moon";
+        planet.src = "images/planet_moon.png";
+        saveGame();
+
+    }
+
+};
+
+lavaPlanet.onclick = () => {
+
+    if(clicks >= 1500){
+
+        currentPlanet = "lava";
+        planet.src = "images/planet_lava.png";
+        saveGame();
+
+    }
+
+};
+
+icePlanet.onclick = () => {
+
+    if(clicks >= 2000){
+
+        currentPlanet = "ice";
+        planet.src = "images/planet_ice.png";
+        saveGame();
+
+    }
+
+};
+
+saturnPlanet.onclick = () => {
+
+    if(clicks >= 2500){
+
+        currentPlanet = "saturn";
+        planet.src = "images/planet_saturn.png";
+        saveGame();
+
+    }
+
+};
+
+darkPlanet.onclick = () => {
+
+    if(clicks >= 3000){
+
+        currentPlanet = "dark";
+        planet.src = "images/planet_dark.png";
+        saveGame();
+
+    }
+
+};
+
+// ---------- +Монеты ----------
+
+planet.addEventListener("click", () => {
+
+    const plus = document.createElement("div");
+
+    plus.innerText = "+" + clickPower;
+
+    plus.style.position = "absolute";
+    plus.style.left = (window.innerWidth / 2) + "px";
+    plus.style.top = (window.innerHeight / 2) + "px";
+
+    plus.style.color = "gold";
+    plus.style.fontSize = "35px";
+    plus.style.fontWeight = "bold";
+    plus.style.pointerEvents = "none";
+
+    document.body.appendChild(plus);
+
+    let y = window.innerHeight / 2;
+
+    const anim = setInterval(() => {
+
+        y -= 2;
+
+        plus.style.top = y + "px";
+
+    }, 16);
+
+    setTimeout(() => {
+
+        clearInterval(anim);
+
+        plus.remove();
+
+    }, 700);
+
+});
+
+loadGame();
