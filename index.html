@@ -1,227 +1,202 @@
-<!-- =========================
-МАГАЗИН
-========================= -->
+<!DOCTYPE html>
+<html lang="ru">
 
-<div id="shopWindow" class="window">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planet Clicker</title>
 
-<h2>🛒 Магазин</h2>
+    <link rel="stylesheet" href="style.css">
+</head>
 
-<button id="closeShop">❌ Закрыть</button>
+<body>
 
-<hr>
+    <!-- Фон -->
+    <div id="background"></div>
 
-<button id="buyNoob">
-КликНуба (+1)
-<br>
-Цена: 10
-</button>
+    <!-- Верхняя панель -->
+    <header id="top-bar">
 
-<button id="buySonic">
-КликСоника (+10)
-<br>
-Цена: 50
-</button>
+        <div id="coins">
+            <img src="energy_icon.png" alt="Монеты">
+            <span id="coin-count">0</span>
+        </div>
 
-<button id="buySuper">
-АвтоКликСуперМена
-<br>
-+10/сек
-<br>
-Цена:100
-</button>
+        <div id="buttons">
 
-<button id="buySpider">
-АвтоКликСпайдерМена
-<br>
-+30/сек
-<br>
-Цена:150
-</button>
+            <img src="knopka_magazin.png" id="shopBtn" class="ui-btn" alt="Магазин">
 
-</div>
+            <img src="knopka_planety.png" id="planetBtn" class="ui-btn" alt="Планеты">
 
-<!-- =========================
-ПЛАНЕТЫ
-========================= -->
+            <img src="knopka_inventar.png" id="inventoryBtn" class="ui-btn" alt="Инвентарь">
 
-<div id="planetWindow" class="window">
+            <img src="knopka_statistika.png" id="statsBtn" class="ui-btn" alt="Статистика">
 
-<h2>🪐 Планеты</h2>
+            <img src="knopka_nastroiki.png" id="settingsBtn" class="ui-btn" alt="Настройки">
 
-<button id="closePlanet">❌ Закрыть</button>
+            <img src="knopka_ezhednevnaya_nagrada.png" id="dailyBtn" class="ui-btn" alt="Ежедневная награда">
 
-<hr>
+        </div>
 
-<button id="earthPlanet">🌍 Земля</button>
+    </header>
 
-<button id="moonPlanet">
-🌕 Луна
-<br>
-500 кликов
-</button>
+    <!-- Планета -->
 
-<button id="lavaPlanet">
-🌋 Лава
-<br>
-1500 кликов
-</button>
+    <main>
 
-<button id="icePlanet">
-❄️ Лёд
-<br>
-2000 кликов
-</button>
+        <img src="planet_earth.png" id="planet" alt="Планета">
 
-<button id="saturnPlanet">
-🪐 Сатурн
-<br>
-2500 кликов
-</button>
+    </main>
 
-<button id="darkPlanet">
-🌑 Тёмная
-<br>
-3000 кликов
-</button>
+    <!-- Магазин -->
 
-</div>
+    <div id="shopWindow" class="window">
 
-<!-- =========================
-СТАТИСТИКА
-========================= -->
+        <h2>🛒 Магазин</h2>
 
-<div id="statsWindow" class="window">
+        <button id="buyNoob">
+            КликНуба (+1)<br>
+            Цена: 10
+        </button>
 
-<h2>📊 Статистика</h2>
+        <button id="buySonic">
+            КликСоника (+10)<br>
+            Цена: 50
+        </button>
 
-<button id="closeStats">❌ Закрыть</button>
+        <button id="buySuper">
+            АвтоКликСуперМена<br>
+            +10/сек<br>
+            Цена: 100
+        </button>
 
-<hr>
+        <button id="buySpider">
+            АвтоКликСпайдерМена<br>
+            +30/сек<br>
+            Цена: 150
+        </button>
 
-<div id="statsContent">
+    </div>
 
-<p>Всего кликов: 0</p>
+    <!-- Планеты -->
 
-<p>Монет: 0</p>
+    <div id="planetWindow" class="window">
 
-<p>Автоклик: 0</p>
+        <h2>🪐 Планеты</h2>
 
-<p>Время игры: 0 сек</p>
+        <button id="earthPlanet">🌍 Земля</button>
 
-</div>
+        <button id="moonPlanet">🌕 Луна (500 кликов)</button>
 
-</div>
+        <button id="lavaPlanet">🌋 Лава (1500 кликов)</button>
 
-<!-- =========================
-ИНВЕНТАРЬ
-========================= -->
+        <button id="icePlanet">❄️ Ледяная (2000 кликов)</button>
 
-<div id="inventoryWindow" class="window">
+        <button id="saturnPlanet">🪐 Сатурн (2500 кликов)</button>
 
-<h2>🎒 Инвентарь</h2>
+        <button id="darkPlanet">🌑 Тёмная (3000 кликов)</button>
 
-<button id="closeInventory">❌ Закрыть</button>
+    </div>
+        <!-- Инвентарь -->
 
-<hr>
+    <div id="inventoryWindow" class="window">
 
-<div id="inventoryContent">
+        <h2>🎒 Инвентарь</h2>
 
-<p>Пока пусто...</p>
+        <div id="inventoryContent">
 
-</div>
+            <p>Пока пусто...</p>
 
-</div>
+        </div>
 
-<!-- =========================
-НАСТРОЙКИ
-========================= -->
+    </div>
 
-<div id="settingsWindow" class="window">
+    <!-- Статистика -->
 
-<h2>⚙️ Настройки</h2>
+    <div id="statsWindow" class="window">
 
-<button id="closeSettings">❌ Закрыть</button>
+        <h2>📊 Статистика</h2>
 
-<hr>
+        <div id="statsContent">
 
-<button id="toggleMusic">
-🎵 Музыка
-</button>
+            <p>Всего кликов: 0</p>
 
-<button id="toggleSound">
-🔊 Звуки
-</button>
+            <p>Монет: 0</p>
 
-<button id="resetGame">
-🗑 Сбросить игру
-</button>
+            <p>Монет за клик: 1</p>
 
-</div>
+            <p>Автоклик: 0/сек</p>
 
-<!-- =========================
-ЕЖЕДНЕВНАЯ НАГРАДА
-========================= -->
+            <p>Время игры: 0 сек</p>
 
-<div id="dailyWindow" class="window">
+        </div>
 
-<h2>🎁 Ежедневная награда</h2>
+    </div>
 
-<button id="closeDaily">❌ Закрыть</button>
+    <!-- Настройки -->
 
-<hr>
+    <div id="settingsWindow" class="window">
 
-<p>
+        <h2>⚙️ Настройки</h2>
 
-День 1 — 25
+        <button id="toggleMusic">
+            🎵 Музыка
+        </button>
 
-<br>
+        <button id="toggleSound">
+            🔊 Звуки
+        </button>
 
-День 2 — 300
+        <button id="resetGame">
+            🗑 Сбросить игру
+        </button>
 
-<br>
+    </div>
 
-День 3 — 1000
+    <!-- Ежедневная награда -->
 
-<br>
+    <div id="dailyWindow" class="window">
 
-День 4 — 1700
+        <h2>🎁 Ежедневная награда</h2>
 
-<br>
+        <p>День 1 — 25 монет</p>
+        <p>День 2 — 300 монет</p>
+        <p>День 3 — 1000 монет</p>
+        <p>День 4 — 1700 монет</p>
+        <p>День 5 — 2400 монет</p>
+        <p>День 6 — 3000 монет</p>
 
-День 5 — 2400
+    </div>
 
-<br>
+    <!-- Приветственный подарок -->
 
-День 6 — 3000
+    <div id="welcomeWindow" class="window">
 
-</p>
+        <h2>🎉 Добро пожаловать!</h2>
 
-</div>
+        <p>Спасибо, что зашли в нашу игру!</p>
 
-<!-- =========================
-ПЕРВЫЙ ПОДАРОК
-========================= -->
+        <h3>🎁 Ваш подарок</h3>
 
-<div id="welcomeWindow" class="window">
+        <h1>50 монет</h1>
 
-<h2>🎉 Добро пожаловать!</h2>
+        <button id="claimGift">
+            Забрать
+        </button>
 
-<p>
+    </div>
 
-Спасибо, что зашли в нашу игру!
+    <!-- Музыка -->
 
-</p>
+    <audio id="bgMusic" src="music.mp3" loop></audio>
 
-<h1>
+    <!-- Звук клика -->
 
-🎁 50 монет
+    <audio id="clickSound" src="click.mp3"></audio>
 
-</h1>
+    <!-- Скрипт -->
 
-<button id="claimGift">
+    <script src="script.js"></script>
 
-Забрать
-
-</button>
-
-</div>
+</body>
+</html>
