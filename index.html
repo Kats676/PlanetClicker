@@ -1,25 +1,196 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Planet Clicker</title>
 
     <link rel="stylesheet" href="style.css">
+
 </head>
+
 <body>
 
-    <h1>🪐 Planet Clicker</h1>
+    <!-- Фон -->
 
-    <div id="score">
-        Энергия: <span id="energy">0</span>
+    <div id="background"></div>
+
+    <!-- Верхняя панель -->
+
+    <header id="top-bar">
+
+        <div id="coins">
+
+            <img src="images/energy_icon.png" alt="">
+
+            <span id="coin-count">0</span>
+
+        </div>
+
+        <div id="buttons">
+
+            <img src="images/knopka_magazin.png" id="shopBtn" class="ui-btn">
+
+            <img src="images/knopka_planety.png" id="planetBtn" class="ui-btn">
+
+            <img src="images/knopka_inventar.png" id="inventoryBtn" class="ui-btn">
+
+            <img src="images/knopka_statistika.png" id="statsBtn" class="ui-btn">
+
+            <img src="images/knopka_nastroiki.png" id="settingsBtn" class="ui-btn">
+
+            <img src="images/knopka_ezhednevnaya_nagrada.png" id="dailyBtn" class="ui-btn">
+
+        </div>
+
+    </header>
+
+    <!-- Планета -->
+
+    <main>
+
+        <img
+            src="images/planet_earth.png"
+            id="planet"
+            alt="Planet">
+
+    </main>
+
+    <!-- Магазин -->
+
+    <div id="shopWindow" class="window">
+
+        <h2>🛒 Магазин</h2>
+
+        <button id="buyNoob">
+            КликНуба (+1)
+            <br>
+            Цена: 10
+        </button>
+
+        <br><br>
+
+        <button id="buySonic">
+            КликСоника (+10)
+            <br>
+            Цена: 50
+        </button>
+
+        <br><br>
+
+        <button id="buySuper">
+            АвтоКликСуперМена
+            <br>
+            +10 монет/сек
+            <br>
+            Цена: 100
+        </button>
+
+        <br><br>
+
+        <button id="buySpider">
+            АвтоКликСпайдерМена
+            <br>
+            +30 монет/сек
+            <br>
+            Цена: 150
+        </button>
+
     </div>
 
-    <button id="planet">
-        🪐
-    </button>
+    <!-- Планеты -->
+
+    <div id="planetWindow" class="window"></div>
+
+    <!-- Инвентарь -->
+
+    <div id="inventoryWindow" class="window"></div>
+
+    <!-- Статистика -->
+
+    <div id="statsWindow" class="window"></div>
+
+    <!-- Настройки -->
+
+    <div id="settingsWindow" class="window">
+
+        <h2>⚙️ Настройки</h2>
+
+        <button id="toggleMusic">
+            Музыка Вкл/Выкл
+        </button>
+
+        <br><br>
+
+        <button id="toggleSound">
+            Звуки Вкл/Выкл
+        </button>
+
+        <br><br>
+
+        <button id="resetGame">
+            Сбросить сохранение
+        </button>
+
+    </div>
+
+    <!-- Ежедневная награда -->
+
+    <div id="dailyWindow" class="window"></div>
+
+    <!-- Первый подарок -->
+
+    <div id="welcomeWindow" class="window">
+
+        <h2>🎉 Добро пожаловать!</h2>
+
+        <p>
+
+            Спасибо, что зашли в нашу игру!
+
+        </p>
+
+        <h3>
+
+            🎁 Подарок
+
+        </h3>
+
+        <h1>
+
+            50 монет
+
+        </h1>
+
+        <button id="claimGift">
+
+            Забрать
+
+        </button>
+
+    </div>
+
+    <!-- Музыка -->
+
+    <audio
+        id="bgMusic"
+        src="sounds/music.mp3"
+        loop>
+    </audio>
+
+    <!-- Клик -->
+
+    <audio
+        id="clickSound"
+        src="sounds/click.mp3">
+    </audio>
 
     <script src="script.js"></script>
 
 </body>
+
 </html>
